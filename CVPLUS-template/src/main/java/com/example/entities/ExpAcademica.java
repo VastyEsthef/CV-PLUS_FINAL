@@ -12,59 +12,55 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "expAcademica")
+@Table(name = "ExpAcademica")
 public class ExpAcademica {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idExpAcademica;
+	private Long IdExpAc;
 
-	@Column(name = "nombreInstitucionAcademica", length = 200, nullable = false)
-	private String nombreInstitucionAcademica;
-	
-	@Column(name = "descripcionExpAcademica", length = 200, nullable = false)
-	private String descripcionExpAcademica;
+	@Column(name = "DescripcionExpA", length = 200, nullable = false)
+	private String DescripcionExpA;
 
-	@Column(name = "fechaInicioExpAcademica", nullable = false)
-	private LocalDate fechaInicioExpAcademica;
+	@Column(name = "FechaInicioExpA", nullable = false)
+	private LocalDate FechaInicioExpA;
 
-	public Long getIdExpAcademica() {
-		return idExpAcademica;
+	@Column(name = "FechaFinExpA", nullable = false)
+	private LocalDate FechaFinExpA;
+
+	@ManyToOne
+	@JoinColumn(name = "Id_Curriculum", nullable = false)
+	private Curriculum curriculum;
+
+	public Long getIdExpAc() {
+		return IdExpAc;
 	}
 
-	public void setIdExpAcademica(Long idExpAcademica) {
-		this.idExpAcademica = idExpAcademica;
+	public void setIdExpAc(Long idExpAc) {
+		IdExpAc = idExpAc;
 	}
 
-	public String getNombreInstitucionAcademica() {
-		return nombreInstitucionAcademica;
+	public String getDescripcionExpA() {
+		return DescripcionExpA;
 	}
 
-	public void setNombreInstitucionAcademica(String nombreInstitucionAcademica) {
-		this.nombreInstitucionAcademica = nombreInstitucionAcademica;
+	public void setDescripcionExpA(String descripcionExpA) {
+		DescripcionExpA = descripcionExpA;
 	}
 
-	public String getDescripcionExpAcademica() {
-		return descripcionExpAcademica;
+	public LocalDate getFechaInicioExpA() {
+		return FechaInicioExpA;
 	}
 
-	public void setDescripcionExpAcademica(String descripcionExpAcademica) {
-		this.descripcionExpAcademica = descripcionExpAcademica;
+	public void setFechaInicioExpA(LocalDate fechaInicioExpA) {
+		FechaInicioExpA = fechaInicioExpA;
 	}
 
-	public LocalDate getFechaInicioExpAcademica() {
-		return fechaInicioExpAcademica;
+	public LocalDate getFechaFinExpA() {
+		return FechaFinExpA;
 	}
 
-	public void setFechaInicioExpAcademica(LocalDate fechaInicioExpAcademica) {
-		this.fechaInicioExpAcademica = fechaInicioExpAcademica;
-	}
-
-	public LocalDate getFechaFinExpAcademica() {
-		return fechaFinExpAcademica;
-	}
-
-	public void setFechaFinExpAcademica(LocalDate fechaFinExpAcademica) {
-		this.fechaFinExpAcademica = fechaFinExpAcademica;
+	public void setFechaFinExpA(LocalDate fechaFinExpA) {
+		FechaFinExpA = fechaFinExpA;
 	}
 
 	public Curriculum getCurriculum() {
@@ -75,12 +71,6 @@ public class ExpAcademica {
 		this.curriculum = curriculum;
 	}
 
-	@Column(name = "fechaFinExpAcademica", nullable = false)
-	private LocalDate fechaFinExpAcademica;
-
-	@ManyToOne
-	@JoinColumn(name = "id_Curriculum", nullable = false)
-	private Curriculum curriculum;
 	
 
 }

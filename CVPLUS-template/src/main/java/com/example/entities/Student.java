@@ -1,58 +1,42 @@
 package com.example.entities;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 @Entity 
 @Table(name="Students")
 public class Student {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdStudent;
 
-	@NotEmpty(message= "Ingresar nombre del estudiante")
-	@Column(name = "FirstName", length = 20, nullable = false)
+	@Column(name = "FirstName", length = 80, nullable = false)
 	private String FirstName;
 
-	@NotEmpty(message= "Ingresar apellido del estudiante")
-	@Column(name = "LastName", length = 20, nullable = false)
+	@Column(name = "LastName", length = 80, nullable = false)
 	private String LastName;
 	
-	@Email(message = "Ingresa un email con el formato correcto.")
-	@NotEmpty(message = "Ingresa el correo")
-	@Column(name = "Email", length = 30, nullable = false)
+	@Column(name = "Email", length = 80, nullable = false)
 	private String Email;
 
-	@Size(min = 8, max = 8, message = "El DNI tiene que ser de 8 digitos")
-	@NotEmpty(message = "Ingresar DNI")
 	@Column(name = "Dni", nullable = false)
-	private String Dni;
+	private Long Dni;
 
-	@NotEmpty(message = "Ingresar Rubro")
-	@Column(name = "Rubro", length = 20, nullable = false)
+	@Column(name = "Rubro", length = 80, nullable = false)
 	private String Rubro;
 	
-
 	@Column(name = "Categoria", nullable = true)
 	private Boolean Categoria;
-	
-	
-	@Column(name = "Numero",  nullable = false, length = 10)
-	private String Numero;
-	
-	public void setNumero(String numero) {
-		Numero = numero;
-	}
 
-	@NotEmpty(message = "Ingresar contraseña")
-	@Column(name = "Contrasenia",length = 30, nullable = false)
+	@Column(name = "Numero", nullable = false)
+	private Long Numero;
+	
+	@Column(name = "Contrasenia",length = 50, nullable = false)
 	private String Contrasenia;
 
 	public Long getIdStudent() {
@@ -79,10 +63,6 @@ public class Student {
 		LastName = lastName;
 	}
 
-	public String getNumero() {
-		return Numero;
-	}
-
 	public String getEmail() {
 		return Email;
 	}
@@ -91,11 +71,11 @@ public class Student {
 		Email = email;
 	}
 
-	public String getDni() {
+	public Long getDni() {
 		return Dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(Long dni) {
 		Dni = dni;
 	}
 
@@ -115,6 +95,13 @@ public class Student {
 		Categoria = categoria;
 	}
 
+	public Long getNumero() {
+		return Numero;
+	}
+
+	public void setNumero(Long numero) {
+		Numero = numero;
+	}
 
 	public String getContrasenia() {
 		return Contrasenia;
@@ -123,4 +110,9 @@ public class Student {
 	public void setContrasenia(String contrasenia) {
 		Contrasenia = contrasenia;
 	}
+	
+	
+	
+	
+
 }

@@ -7,11 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="curriculums")
+@Table(name="Curriculums")
 public class Curriculum {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,8 +22,7 @@ public class Curriculum {
 	@ManyToOne
 	@JoinColumn(name="IdStudent",nullable=false)
 	private Student student;
-    
-	
+
 	public Long getId_Curriculum() {
 		return Id_Curriculum;
 	}
@@ -48,7 +46,6 @@ public class Curriculum {
 	public void setStudent(Student student) {
 		this.student = student;
 	}
-
 
 	
 
