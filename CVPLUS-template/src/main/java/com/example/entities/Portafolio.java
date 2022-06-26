@@ -9,88 +9,66 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "portafolios")
+@Table(name="portafolios" )
 public class Portafolio {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdPortafolio;
-	
-	@NotEmpty(message = "Ingresar el titulo del portafolio")
-	@Column(name = "Nombre_Porta", length = 50, nullable = false)
-	private String NombrePortafolio;
-	
-	@NotEmpty(message = "Ingresar la descripcion del portafolio")
-	@Column(name = "Descripcion_Portafolio", length =500, nullable = false)
-	private String DescripcionPortafolio;
-	
-	@ManyToOne
-	@JoinColumn(name="IdStudent",nullable=true)
-	private Student student;
-	
-	
-	public Portafolio() {
-	}
-	
-	public Portafolio(String NombrePortafolio) {
-		this.NombrePortafolio = NombrePortafolio;
-		
-	}
-	
-	
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Long id;
+	@Column(name="nombre",nullable=false)
+	private String nombre;
+	@Column(name="comentario",nullable=true)
+	private String comentario;
+	@Column(name="valoracion",nullable=true)
+	private String valoracion;
 	
 	@ManyToMany(mappedBy="portafolios")
-	private List<Proyecto>proyectos=new ArrayList<>();
+	private List<Empresa> empresas=new ArrayList<>();
 	
-
+	@ManyToOne()
+	@JoinColumn(name="student_id")
+	private Student students; 
 	
-	public String getDescripcionPortafolio() {
-		return DescripcionPortafolio;
+	public Long getId() {
+		return id;
 	}
-
-	public void setDescripcionPortafolio(String descripcionPortafolio) {
-		DescripcionPortafolio = descripcionPortafolio;
+	public void setId(Long id) {
+		this.id = id;
 	}
-
-	public List<Proyecto> getProyectos() {
-		return proyectos;
+	public String getNombre() {
+		return nombre;
 	}
-
-	public void setProyectos(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-
-	public Long getIdPortafolio() {
-		return IdPortafolio;
+	public String getComentario() {
+		return comentario;
 	}
-
-	public void setIdPortafolio(Long idPortafolio) {
-		IdPortafolio = idPortafolio;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
-
-	public String getNombrePortafolio() {
-		return NombrePortafolio;
+	public String getValoracion() {
+		return valoracion;
 	}
-
-	public void setNombrePortafolio(String nombrePortafolio) {
-		NombrePortafolio = nombrePortafolio;
+	public void setValoracion(String valoracion) {
+		this.valoracion = valoracion;
 	}
-
-	public Student getStudent() {
-		return student;
+	public List<Empresa> getEmpresas() {
+		return empresas;
 	}
-
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
 	}
-
-
-
-
+	public Student getStudents() {
+		return students;
+	}
+	public void setStudents(Student students) {
+		this.students = students;
+	}
+	
+	
 }

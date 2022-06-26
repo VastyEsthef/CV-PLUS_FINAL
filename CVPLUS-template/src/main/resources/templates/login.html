@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html xmlns:th="thymeleaf.org">
+
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -23,6 +24,7 @@
 
 </head>
 <body>
+<th:block th:include="fragments/navbar"></th:block>
 	<div class="container">
 		<div class="row mb-5">
 			<div class="col-sm-4"></div>
@@ -43,5 +45,7 @@
 			<div class="col-sm-4"></div>
 		</div>
 	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+	
 </body>
 </html>

@@ -105,6 +105,17 @@ public class StudentController {
         
         return "Student/form";
     }
+	public StudentController(StudentService studentService) {
+		this.studentService=studentService;
+		}
+		
+		@GetMapping
+		public String homee(Model model) {
+			model.addAttribute("students",studentService.getAllStudent());
+			model.addAttribute("student",studentService.getAllStudent());
+			return "estudiantes/list";
+		}
+		
 	
 	
 	

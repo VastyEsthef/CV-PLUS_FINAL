@@ -9,9 +9,9 @@ import com.example.entities.Empresa;
 
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
-	@Query("SELECT count(e) FROM Empresa e  WHERE e.Ruc=?1")
-	int verificarExistenciaEmpresa(String Ruc);
+	@Query("SELECT count(e) FROM Empresa e  WHERE e.ruc=?1")
+	int verificarExistenciaEmpresa(String ruc);
 	
-	@Query("SELECT e FROM Empresa e  WHERE e.Ruc=?1")
-	List<Empresa> buscarEmpresaPorRuc(String Ruc);
+	@Query("SELECT e FROM Empresa e  WHERE e.ruc=?1")
+	List<Empresa> buscarEmpresaPorRuc(String ruc);
 }

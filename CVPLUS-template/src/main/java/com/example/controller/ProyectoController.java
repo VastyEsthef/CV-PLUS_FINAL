@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.entities.Portafolio;
+import com.example.entities.Portafolio2;
 import com.example.entities.Proyecto;
 import com.example.service.ProyectoService;
-import com.example.service.impl.PortafolioService;
+import com.example.service.impl.PortafolioServiceJ;
 
 @Controller
 @RequestMapping("/proyectos")
@@ -25,11 +25,11 @@ public class ProyectoController {
 	private ProyectoService proyectoService;
 	
 	@Autowired
-	private PortafolioService portafolioService;
+	private PortafolioServiceJ portafolioService;
 	
-	private List<Portafolio> portafolioList=new ArrayList<>();
+	private List<Portafolio2> portafolioList=new ArrayList<>();
 	
-	public ProyectoController(ProyectoService proyectoService,PortafolioService portafolioService) {
+	public ProyectoController(ProyectoService proyectoService,PortafolioServiceJ portafolioService) {
 		
 		this.proyectoService=proyectoService;
 		this.portafolioService=portafolioService;
@@ -108,7 +108,7 @@ public class ProyectoController {
 	@GetMapping("/edit/{id}")
     public String editProyectoForm(@PathVariable("id") long id, Model model) {
         Proyecto proyecto = proyectoService.getProyectoById(id);
-        List<Portafolio> portafolios = portafolioService.getAllPortafolios();
+        List<Portafolio2> portafolios = portafolioService.getAllPortafolios();
         model.addAttribute("portafolios", portafolios);
         model.addAttribute("proyecto", proyecto);
         return "proyectos/edit_proyecto";

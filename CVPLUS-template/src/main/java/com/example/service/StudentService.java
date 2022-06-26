@@ -25,6 +25,9 @@ public class StudentService{
 		
 		return  students;
 	}
+	public List<Student> getAllStudent() {
+        return (List<Student>) studentRepository.findAll();
+    }
 	
 
 	public int registrarStudents(Student student) throws Exception {
@@ -52,6 +55,35 @@ public class StudentService{
 	
 	public Optional<Student> getOne(Long IdStudent) throws Exception {
 		return studentRepository.findById(IdStudent);
+	}
+	public StudentService(StudentRepository studentRepository) {
+		this.studentRepository=studentRepository;
+	}
+	
+	public List<Student> getAllStudentByName(){
+		return studentRepository.findAllSortByName();
+	}
+	
+	public List<Student> getAllStudentByValoracion(){
+		return studentRepository.findAllSortByValoracion();
+	}
+	
+	
+	public List<Student> buscarStudentByFirstName(String firstName){
+		List<Student> students=studentRepository.buscarStudent(firstName);
+		return students;
+	}
+	
+	public Student saveStudent(Student student) {
+		return studentRepository.save(student);
+	}
+	
+	public Student getStudentByid(Long id) {
+		return studentRepository.findById(id).get();
+	}
+	
+	public Student updateStudent(Student student) {
+		return studentRepository.save(student);
 	}
 
 }

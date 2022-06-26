@@ -1,118 +1,140 @@
 package com.example.entities;
 
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name="Students")
+@Entity
+@Table(name = "Students")
 public class Student {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdStudent;
+	private Long idStudent;
 
 	@Column(name = "FirstName", length = 80, nullable = false)
-	private String FirstName;
+	private String firstName;
 
 	@Column(name = "LastName", length = 80, nullable = false)
-	private String LastName;
-	
+	private String lastName;
+
 	@Column(name = "Email", length = 80, nullable = false)
-	private String Email;
+	private String email;
 
 	@Column(name = "Dni", nullable = false)
-	private Long Dni;
+	private String dni;
 
 	@Column(name = "Rubro", length = 80, nullable = false)
-	private String Rubro;
-	
+	private String rubro;
+
 	@Column(name = "Categoria", nullable = true)
-	private Boolean Categoria;
+	private Boolean categoria;
 
 	@Column(name = "Numero", nullable = false)
-	private Long Numero;
-	
-	@Column(name = "Contrasenia",length = 50, nullable = false)
-	private String Contrasenia;
+	private Long numero;
+
+	@Column(name = "Contrasenia", length = 50, nullable = false)
+	private String contrasenia;
+
+	@OneToMany(mappedBy = "student")
+	Set<Advisory> advisories;
+
+	@OneToMany(mappedBy="students", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Portafolio> portafolios;
 
 	public Long getIdStudent() {
-		return IdStudent;
+		return idStudent;
 	}
 
 	public void setIdStudent(Long idStudent) {
-		IdStudent = idStudent;
+		this.idStudent = idStudent;
 	}
 
+	
+
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
-	public Long getDni() {
-		return Dni;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setDni(Long dni) {
-		Dni = dni;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getRubro() {
-		return Rubro;
+		return rubro;
 	}
 
 	public void setRubro(String rubro) {
-		Rubro = rubro;
+		this.rubro = rubro;
 	}
 
 	public Boolean getCategoria() {
-		return Categoria;
+		return categoria;
 	}
 
 	public void setCategoria(Boolean categoria) {
-		Categoria = categoria;
+		this.categoria = categoria;
 	}
 
 	public Long getNumero() {
-		return Numero;
+		return numero;
 	}
 
 	public void setNumero(Long numero) {
-		Numero = numero;
+		this.numero = numero;
 	}
 
 	public String getContrasenia() {
-		return Contrasenia;
+		return contrasenia;
 	}
 
 	public void setContrasenia(String contrasenia) {
-		Contrasenia = contrasenia;
+		this.contrasenia = contrasenia;
+	}
+
+	public Set<Advisory> getAdvisories() {
+		return advisories;
+	}
+
+	public void setAdvisories(Set<Advisory> advisories) {
+		this.advisories = advisories;
 	}
 	
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
+	}
 	
-	
-	
-
 }
